@@ -1,3 +1,5 @@
+package com.etract.controller;
+
 class Main {
 
         private void execute() {

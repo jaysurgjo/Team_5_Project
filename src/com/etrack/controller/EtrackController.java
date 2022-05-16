@@ -10,6 +10,8 @@ class EtrackController {
 
     //created model class
     public void execute(){
+        welcome();
+        displayCart();
 
     }
 
@@ -33,7 +35,18 @@ class EtrackController {
 
     //
     public String promptForName() {
+        String userName = null;
 
+        boolean validName = false;
+        while(!validName) {
+            System.out.println("Please enter name: ");
+            String customerName = scanner.nextLine();
+            if (customerName.length() > 1 && (!customerName.matches("\\d{1,2}"))) {
+                userName = customerName;
+            }
+
+        }
+        return  userName;
     }
 
 

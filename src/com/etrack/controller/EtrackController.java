@@ -7,19 +7,19 @@ class EtrackController {
     private Scanner scanner = new Scanner(System.in);    // String - nextLine  Integer- nextInt
 
 
-
     //created model class
+
     public void execute(){
         welcome();
         displayCart();
-
-    }
+     }
+ 
 
     // show products available
 
 
     // Select product
-    public void selectProduct(){
+    public void selectProduct() {
 
     }
 
@@ -35,6 +35,7 @@ class EtrackController {
 
     //
     public String promptForName() {
+
         String userName = null;
 
         boolean validName = false;

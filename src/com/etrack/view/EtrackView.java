@@ -1,6 +1,6 @@
 package com.etrack.view;
 
-class View {
+class EtrackView {
 
     //created view class
 }

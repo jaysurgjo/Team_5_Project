@@ -7,9 +7,8 @@ class EtrackController {
     private Scanner scanner = new Scanner(System.in);    // String - nextLine  Integer- nextInt
 
 
-
     //created model class
-    public void execute(){
+    public void execute() {
 
     }
 
@@ -17,7 +16,7 @@ class EtrackController {
 
 
     // Select product
-    public void selectProduct(){
+    public void selectProduct() {
 
     }
 
@@ -33,7 +32,7 @@ class EtrackController {
 
     //
     public String promptForName() {
-
+        return null;
     }
 
 

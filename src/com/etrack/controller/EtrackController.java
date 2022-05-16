@@ -6,10 +6,7 @@ import com.etrack.view.EtrackView;
 import java.util.Scanner;
 
 class EtrackController {
-
     private Scanner scanner = new Scanner(System.in);    // String - nextLine  Integer- nextInt
-
-
     //created model class
 
     public void execute(){
@@ -23,14 +20,11 @@ class EtrackController {
 
     // Select product
     public void selectProduct() {
-
     }
-
 
     // Update cart
     public void updateCart(int id, String productName, double price) {
-        shoppingCart.updateCart(id, productName, price)
-
+        //shoppingCart.updateCart(id, productName, price);
     }
 
     public void displayCart() {
@@ -53,6 +47,10 @@ class EtrackController {
         }
         return  userName;
     }
+
+    //prompt for name
+    //show product
+
 
 
     private void welcome() {

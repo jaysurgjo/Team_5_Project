@@ -2,65 +2,15 @@ package com.etrack;
 
 import java.security.PublicKey;
 
-public enum ShoppingRewards implements Shopper{
-    TEN_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "$10 gift card";
-        }
-    },
-    TWENTY_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "$20 gift card";
-        }
-    },
-    THIRTY_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return " $30 gift card";
-        }
-    },
-    FOURTY_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "$40 gift card";
-        }
-    },
-    FIFTY_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "$50 gift card";
-        }
-    },
-    SIXTY_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "$60 gift card";
-        }
-    },
-    SEVENTY_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "$70 gift card";
-        }
-    },
-    EIGHTY_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "80 gift card";
-        }
-    },
-    NINETY_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "$90 gift card";
-        }
-    },
-    ONEHUNDRED_DOLLAR_GIFT_CARD {
-        @Override
-        public String toString() {
-            return "$100 gift card";
-        }
-    };
+public enum ShoppingRewards {
+    TEN_DOLLAR_GIFT_CARD,
+    TWENTY_DOLLAR_GIFT_CARD,
+    THIRTY_DOLLAR_GIFT_CARD,
+    FOURTY_DOLLAR_GIFT_CARD,
+    FIFTY_DOLLAR_GIFT_CARD,
+    SIXTY_DOLLAR_GIFT_CARD,
+    SEVENTY_DOLLAR_GIFT_CARD,
+    EIGHTY_DOLLAR_GIFT_CARD,
+    NINETY_DOLLAR_GIFT_CARD,
+    ONEHUNDRED_DOLLAR_GIFT_CARD;
 }

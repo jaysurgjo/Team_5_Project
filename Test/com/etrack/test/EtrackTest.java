@@ -1,4 +1,4 @@
-package com.etract.test;
+package com.etrack.test;
 
 class EtrackTest {
 

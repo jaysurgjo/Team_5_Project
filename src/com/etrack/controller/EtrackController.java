@@ -1,5 +1,8 @@
 package com.etrack.controller;
 
+
+import com.etrack.view.EtrackView;
+
 import java.util.Scanner;
 
 class EtrackController {
@@ -25,12 +28,13 @@ class EtrackController {
 
 
     // Update cart
-    public void updateCart() {
+    public void updateCart(int id, String productName, double price) {
+        shoppingCart.updateCart(id, productName, price)
 
     }
 
     public void displayCart() {
-
+        EtrackView cartView = new EtrackView();
     }
 
     //

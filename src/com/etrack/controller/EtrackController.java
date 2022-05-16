@@ -1,4 +1,4 @@
-package com.etract.controller;
+package com.etrack.controller;
 
 class EtrackController {
 

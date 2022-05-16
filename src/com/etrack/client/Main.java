@@ -1,4 +1,4 @@
-package com.etract.client;
+package com.etrack.client;
 
 class Main {
 

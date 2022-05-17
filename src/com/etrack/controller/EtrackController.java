@@ -43,14 +43,9 @@ class EtrackController {
             if (customerName.length() > 1 && (!customerName.matches("\\d{1,2}"))) {
                 userName = customerName;
             }
-
         }
         return  userName;
     }
-
-    //prompt for name
-    //show product
-
 
 
     private void welcome() {

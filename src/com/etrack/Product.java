@@ -1,18 +1,18 @@
 package com.etrack;
 
 public class Product {
-    private final int productId;
-    private final String name;
-    private final double price;
+    private int id;
+    private String name;
+    private double price;
 
-    public Product(int productId, String name, double price) {
-        this.productId = productId;
+    public Product(int id, String name, double price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public int getProductId() {
-        return productId;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -25,6 +25,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Products: " + getProductId() + " " + getName() + " " + getPrice();
+        return "Products: " + getId() + " " + getName() + " " + getPrice();
     }
 }

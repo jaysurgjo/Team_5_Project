@@ -1,54 +1,102 @@
 package com.etrack;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import com.etrack.controller.EtrackController;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
 
 public class Shopper {
 
     private String CustomerName;
     private int customerId;
-    private final int rewardPoints;
-    //Collections<Product> cart = new ArrayList<>();
+    private double rewards;
+    private final Map<Integer,Product> products = loadProducts();
+    private final Collection<Product> cart = new ArrayList<>();
 
-    public Shopper(String customerName, int customerId, int rewardPoints) {
-        CustomerName = customerName;
-        this.customerId = customerId;
-        this.rewardPoints = rewardPoints;
+
+    public void addProductToCart(int id) {
+        // if user input matches item in showProductList()
+        // add productName and Price into the cart collection
+        if (products.containsKey(id))  {  //  == if from catalog
+            cart.add(products.get(id));
+        }
+
+    }
+
+    public void removeProductFromCart(int id) {
+        // if selections and id to remove product
+        // find that id and remove from cart collection
+        if ( products.containsKey(id) ) {
+            cart.remove(products.get(id));  // remove product
+        }
+        }
+
+
+    public double totalCostOfAllProducts() {
+        double total = 0.0;
+        // for each item in cart. get multiple get me the price
+
+
+        return total;
+    }
+
+    public double rewards () {
+        double results = 0.0;
+
+        return results;
+    }
+
+    private void shop() {
+        boolean stillShopping = true;
+
+        while(stillShopping) {
+            showProductList();
+            int id = promptForProductId();
+            addProductToCart(id);
+            stillShopping = promptToContinueShopping();
+
+        }
     }
 
     public String getCustomerName() {
         return CustomerName;
     }
 
-    public void setCustomerName(String customerName) {
-        CustomerName = customerName;
+    public double getRewards() {
+        return rewards;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
+    // readlines from product-data
+    private Map<Integer, Product> loadProducts() {
+        Map<Integer, Product> products = new HashMap<>();
+        List<Double> price = new ArrayList<>();
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
+        try {
 
-    public double getRewardPoints() {
-        return rewardPoints;
-    }
+            List<String> lines = Files.readAllLines(Path.of("data/product-data.csv"));
 
-    private void add() {
+            for (String line : lines) {
+                String[] tokens = line.split(",");
+                Integer id = Integer.parseInt(tokens[0]);
+                //Product nameString = tokens[1];
+                Product name = products.get(tokens[1]);  // get the second item from the token array
+                price.add(Double.parseDouble(tokens[3]));
+                products.put(id, name);
 
-    }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    private void remove() {
+        return products;
 
-    }
-    private void getCartTotal() {
-        //return double;
     }
 
     @Override
     public String toString() {
-        return "CustomerName: " + getCustomerName() + "customerId: " + getCustomerId() + "reward points=" + getRewardPoints();
+        return "CustomerName: " + getCustomerName() + "customerId: " + "reward points=" + getRewards();
     }
 }

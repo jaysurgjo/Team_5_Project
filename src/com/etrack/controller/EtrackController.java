@@ -1,23 +1,35 @@
 package com.etrack.controller;
 
-import java.util.Scanner;
+import com.etrack.Product;
+import com.etrack.ProductLoader;
+import com.etrack.Shopper;
+import com.rtrack.view.ProductView;
+
+import java.util.*;
 
 public class EtrackController {
     private Scanner scanner = new Scanner(System.in);    // String - nextLine  Integer- nextInt
-    private int productId;
+    private Map<Integer, Product> productMap = ProductLoader.loadProducts();
+    private Shopper shopper = null;
+    private boolean stillShopping = true;
+
 
     //created model class
-
-    public void execute(){
+    public void execute() {
         welcome();
-        promptForCustomerName("Jordan");
-        //showProductList();
-        //promptForProductId();
-        //addToCart();
-        //promptToContinueShopping();
-        //displayCart();
-        //checkOut();
-     }
+        String customerName = promptForCustomerName();
+        shopper = new Shopper(customerName);
+
+        while (stillShopping) {
+            showProductList();
+            int productId = promptForProductId();
+            Product p = productMap.get(productId);
+            addToCart(p);
+            stillShopping = promptToContinueShopping();
+        }
+        // all methods private
+        checkOut();
+    }
 
     private void welcome() {
         System.out.println("\n");
@@ -25,75 +37,82 @@ public class EtrackController {
         System.out.println("\n");
     }
 
-     // prompt for name
-     public String promptForCustomerName(String userName) {
-         userName = null;
-         boolean validName = false;
-         System.out.printf("Please enter name: ");
-         while(!validName) {
-             String customerName = scanner.nextLine();
-             if (customerName.length() > 1 && (!customerName.matches("\\d{1,2}"))) {
-                 userName = customerName;
-             }
-             else{
-                 System.out.print("Please enter name: ");
-             }
-         }
-         return  userName;
-     }
-
-
-     /*
-    // show products available
-    public List<Product> showProductList() {
-        List<Product> productList = new ArrayList<>();
-        // for each prodct from Product and add it in productList
-        productList.add();
+    // prompt for name
+    public String promptForCustomerName() {
+        String userName = null;
+        boolean validName = false;
+        while (!validName) {
+            System.out.print("Please enter name: ");
+            String customerName = scanner.nextLine().trim();
+            if (customerName.length() > 1) {
+                userName = customerName;
+                validName = true;
+            }
+        }
+        return userName;
     }
 
-    // prompt for priductID
+    // show products available
+    public void showProductList() {
+        ProductView view = new ProductView(productMap);
+        view.render();
+    }
+
+    // prompt for productID
     public int promptForProductId() {
         int productId = 0;
         boolean validId = false;
         while (!validId) {
-            System.out.println("Please enter an id: ");
-            String inputId = scanner.nextLine();
-            int inputIdInteger = Integer.parseInt(inputId);
-            if (productId < 0 || productId > 20 ) {
-                productId = inputIdInteger;
+            System.out.print("Please enter an id: ");
+            String inputId = scanner.nextLine().trim();
+            if (inputId.matches("\\d{1,2}")) {   // we support only 99 products
+                productId = Integer.parseInt(inputId);
+                if (productId >= 1 && productId <= productMap.size()) {
+                    validId = true;
+                }
             }
         }
         return productId;
     }
 
+
     // add product to cart by calling shopper method
-    public void addToCart() {
-        // call shopper add method and parse in productId
-        // get the product assciated with the id
-        //addProductToCart(productId);
+    public void addToCart(Product product) {
+        shopper.addProductToCart(product);
     }
 
+
     // ask if they want to checkout or continue
-    public void promptToContinueShopping() {
-        System.out.println("Do you want to checkout or continue. Type Y to continue and N to checkout");
-        String yesOrNo = scanner.nextLine();
-        if (yesOrNo.equals("Y")){
-            promptForProductId();
+    public boolean promptToContinueShopping() {
+        boolean result = false;
+
+        boolean valid = false;
+        while (!valid) {
+            System.out.println("Do you want to checkout or continue. Type Y to continue and N to checkout");
+            String input = scanner.nextLine().toUpperCase().trim();
+            if (input.matches("Y|N")) {
+                //valid = "Y".equals(input);
+                valid = true;
+                result = "Y".equals(input);
+            }
         }
-        else {
-            checkOut();
-        }
+
+        return result;
     }
+
 
     // displau cart
     public void displayCart() {
 
     }
 
+
+
     public void checkOut() {
-        // call total method from shopper
+        // call displaycart
+        // calls total
+        // gets rewards
     }
 
-      */
 
 }

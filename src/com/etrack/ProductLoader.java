@@ -6,22 +6,23 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ProductLoader {
     // readlines from product-data
-    private Map<Integer, Product> loadProducts() {
-        Map<Integer, Product> products = new HashMap<>();
+    public static Map<Integer, Product> loadProducts() {
+        Map<Integer, Product> products = new TreeMap<>();
 
         try {
-
             List<String> lines = Files.readAllLines(Path.of("data/product-data.csv"));
 
             for (String line : lines) {
                 String[] tokens = line.split(",");
-                Integer id = Integer.parseInt(tokens[0]);
-                Product name = products.get(tokens[1]);  // get the second item from the token array
-                Double price = Double.valueOf(tokens[2]);
-                products.put(id, name);
+                int id = Integer.parseInt(tokens[0]);
+                String name = tokens[1];  // get the second item from the token array
+                double price = Double.parseDouble(tokens[2]);
+                products.put(id, new Product(id, name, price));
+
 
             }
         } catch (IOException e) {

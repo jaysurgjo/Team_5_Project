@@ -1,18 +1,11 @@
 package com.etrack;
 
-import com.etrack.controller.EtrackController;
-
-import java.io.IOException;
-import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 
 public class Shopper {
 
-    private String CustomerName;
-    private int customerId;
-    private double getRewards;
+    private String customerName;
+    private double rewards;
     private final Collection<Product> cart = new ArrayList<>();
 
     /*
@@ -20,28 +13,24 @@ public class Shopper {
      * add the product associated with the id
      * And add to cart collection above
      */
-    public void addProductToCart(int id) {
-        /*
-        if (id == ) {  //  == if from catalog
-            cart.add(products.get(id));
-        }
 
-         */
-
+    public Shopper(String customerName) {
+        this.customerName = customerName;
     }
+
+    public void addProductToCart(Product product) {
+        cart.add(product);
+    }
+
+
 
     /*
      * If id inserted by customer matches he id in product
      * remove the product associated with the id
      * And add to cart collection above
      */
-    public void removeProductFromCart(int id) {
-        /*
-        if (products.containsKey(id)) {
-            cart.remove(products.get(id));  // remove product
-        }
-
-         */
+    public void removeProductFromCart(Product product) {
+        cart.remove(product);
     }
 
 
@@ -51,44 +40,32 @@ public class Shopper {
      */
     public double totalCostOfAllProducts() {
         double total = 0.0;
-
+        for (Product product : cart){
+            total += product.getPrice();
+        }
         return total;
     }
+
+    // getCart - returns a copy of collection - List.copyof(cart)
 
 
     /*
      * established that for a reward, when we spend every $5 we get $1 reward
      * Which means total above divided by 5
      */
-    public double getRewards() {
-        double results = 0.0;
-
-        return results;
-    }
 
     /*
      * Contuue running steps above unless customer decides to checkout
      */
-    private void shop() {
-        boolean stillShopping = true;
-
-        while (stillShopping) {
-            /*
-            showProductList();
-            int id = promptForProductId();
-            addProductToCart(id);
-            stillShopping = promptToContinueShopping();
-
-             */
-
-        }
-    }
 
     public String getCustomerName() {
-        return CustomerName;
-
+        return customerName;
     }
 
+    public double getRewards() {
+
+        return totalCostOfAllProducts()/5.0; // to do static divider;
+    }
 
     @Override
     public String toString() {

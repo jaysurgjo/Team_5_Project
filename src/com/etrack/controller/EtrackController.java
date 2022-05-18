@@ -1,11 +1,5 @@
 package com.etrack.controller;
 
-import com.etrack.Shopper;
-import com.etrack.Product;
-import com.etrack.view.EtrackView;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class EtrackController {
@@ -16,7 +10,7 @@ public class EtrackController {
 
     public void execute(){
         welcome();
-        promptForCustomerName();
+        promptForCustomerName("Jordan");
         //showProductList();
         //promptForProductId();
         //addToCart();
@@ -27,27 +21,29 @@ public class EtrackController {
 
     private void welcome() {
         System.out.println("\n");
-        System.out.println("E-TRACK");
+        System.out.println("W E L C O M E  T O  R-T R A C K");
         System.out.println("\n");
     }
 
      // prompt for name
-     public String promptForCustomerName() {
-
-         String userName = null;
-
+     public String promptForCustomerName(String userName) {
+         userName = null;
          boolean validName = false;
+         System.out.printf("Please enter name: ");
          while(!validName) {
-             System.out.println("Please enter name: ");
              String customerName = scanner.nextLine();
              if (customerName.length() > 1 && (!customerName.matches("\\d{1,2}"))) {
                  userName = customerName;
+             }
+             else{
+                 System.out.print("Please enter name: ");
              }
          }
          return  userName;
      }
 
 
+     /*
     // show products available
     public List<Product> showProductList() {
         List<Product> productList = new ArrayList<>();
@@ -95,7 +91,9 @@ public class EtrackController {
     }
 
     public void checkOut() {
-        //
+        // call total method from shopper
     }
+
+      */
 
 }

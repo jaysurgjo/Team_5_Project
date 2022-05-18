@@ -44,19 +44,14 @@ public class Shopper {
         for (Product product : cart){
             total += product.getPrice();
         }
-        return total;
+        return Math.round(total);
     }
 
     // getCart - returns a copy of collection - List.copyof(cart)
     public List<Product> getCart() {
-        List<Product> productList = new ArrayList<>();
-        for (Product product : cart) {
-            productList = List.of(product);
-        }
-        return productList;
+
+        return List.copyOf(cart);
     }
-
-
 
     /*
      * established that for a reward, when we spend every $5 we get $1 reward
@@ -73,7 +68,7 @@ public class Shopper {
 
     public double getRewards() {
 
-        return totalCostOfAllProducts()/REWARDS_FACTOR; // to do static divider;
+        return Math.round(totalCostOfAllProducts()/REWARDS_FACTOR); // to do static divider;
     }
 
     @Override

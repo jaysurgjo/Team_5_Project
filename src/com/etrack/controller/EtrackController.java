@@ -18,15 +18,19 @@ public class EtrackController {
     public void execute() {
         welcome();
         String customerName = promptForCustomerName();
+        System.out.println();
         shopper = new Shopper(customerName);
         while (stillShopping) {
             showProductList();
+            System.out.println();
             int productId = promptForProductId();
             Product p = productMap.get(productId);
             addToCart(p);
+            System.out.println();
             stillShopping = promptToContinueShopping();
         }
         // all methods private
+        System.out.println();
         checkOut();
     }
 
@@ -53,6 +57,7 @@ public class EtrackController {
 
     // show products available
     public void showProductList() {
+        System.out.println("Please choose from the following product: " );
         ProductView view = new ProductView(productMap);
         view.render();
     }
@@ -62,7 +67,7 @@ public class EtrackController {
         int productId = 0;
         boolean validId = false;
         while (!validId) {
-            System.out.print("Please enter an id: ");
+            System.out.print("To select a product, enter id number: ");
             String inputId = scanner.nextLine().trim();
             if (inputId.matches("\\d{1,2}")) {   // we support only 99 products
                 productId = Integer.parseInt(inputId);
@@ -95,20 +100,13 @@ public class EtrackController {
                 result = "Y".equals(input);
             }
         }
-
         return result;
     }
 
-
-    // display cart
-    public void displayCart() {
-        shopper.getCart();
-    }
-
     public void checkOut() {
-        // call displaycart
-        // calls total
-        // gets rewards
+        System.out.println("Cart: " + shopper.getCart() + " total: $" + shopper.totalCostOfAllProducts()
+                            + " rewards: $" + shopper.getRewards());
+
     }
 
 

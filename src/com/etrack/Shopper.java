@@ -6,6 +6,7 @@ public class Shopper {
 
     private String customerName;
     private double rewards;
+    private static final double REWARDS_FACTOR = 5.0;
     private final Collection<Product> cart = new ArrayList<>();
 
     /*
@@ -29,7 +30,7 @@ public class Shopper {
      * remove the product associated with the id
      * And add to cart collection above
      */
-    public void removeProductFromCart(Product product) {
+    private void removeProductFromCart(Product product) {
         cart.remove(product);
     }
 
@@ -47,6 +48,14 @@ public class Shopper {
     }
 
     // getCart - returns a copy of collection - List.copyof(cart)
+    public List<Product> getCart() {
+        List<Product> productList = new ArrayList<>();
+        for (Product product : cart) {
+            productList = List.of(product);
+        }
+        return productList;
+    }
+
 
 
     /*
@@ -64,11 +73,11 @@ public class Shopper {
 
     public double getRewards() {
 
-        return totalCostOfAllProducts()/5.0; // to do static divider;
+        return totalCostOfAllProducts()/REWARDS_FACTOR; // to do static divider;
     }
 
     @Override
     public String toString() {
-        return "CustomerName: " + getCustomerName() + "customerId: " + "reward points=" + getRewards();
+        return "CustomerName: " + getCustomerName() + " totalCost: " + totalCostOfAllProducts() + "reward points=" + getRewards();
     }
 }

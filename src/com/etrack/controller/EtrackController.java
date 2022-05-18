@@ -19,7 +19,6 @@ public class EtrackController {
         welcome();
         String customerName = promptForCustomerName();
         shopper = new Shopper(customerName);
-
         while (stillShopping) {
             showProductList();
             int productId = promptForProductId();
@@ -77,7 +76,7 @@ public class EtrackController {
 
 
     // add product to cart by calling shopper method
-    public void addToCart(Product product) {
+    private void addToCart(Product product) {
         shopper.addProductToCart(product);
     }
 
@@ -101,12 +100,10 @@ public class EtrackController {
     }
 
 
-    // displau cart
+    // display cart
     public void displayCart() {
-
+        shopper.getCart();
     }
-
-
 
     public void checkOut() {
         // call displaycart

@@ -13,14 +13,13 @@ public class Shopper {
     private String CustomerName;
     private int customerId;
     private double rewards;
-    private final Map<Integer,Product> products = loadProducts();
     private final Collection<Product> cart = new ArrayList<>();
 
 
     public void addProductToCart(int id) {
         // if user input matches item in showProductList()
         // add productName and Price into the cart collection
-        if (products.containsKey(id))  {  //  == if from catalog
+        if (id == ) {  //  == if from catalog
             cart.add(products.get(id));
         }
 
@@ -29,10 +28,10 @@ public class Shopper {
     public void removeProductFromCart(int id) {
         // if selections and id to remove product
         // find that id and remove from cart collection
-        if ( products.containsKey(id) ) {
+        if (products.containsKey(id)) {
             cart.remove(products.get(id));  // remove product
         }
-        }
+    }
 
 
     public double totalCostOfAllProducts() {
@@ -43,7 +42,7 @@ public class Shopper {
         return total;
     }
 
-    public double rewards () {
+    public double rewards() {
         double results = 0.0;
 
         return results;
@@ -52,7 +51,7 @@ public class Shopper {
     private void shop() {
         boolean stillShopping = true;
 
-        while(stillShopping) {
+        while (stillShopping) {
             showProductList();
             int id = promptForProductId();
             addProductToCart(id);
@@ -69,10 +68,10 @@ public class Shopper {
         return rewards;
     }
 
+    /*
     // readlines from product-data
     private Map<Integer, Product> loadProducts() {
         Map<Integer, Product> products = new HashMap<>();
-        List<Double> price = new ArrayList<>();
 
         try {
 
@@ -81,9 +80,8 @@ public class Shopper {
             for (String line : lines) {
                 String[] tokens = line.split(",");
                 Integer id = Integer.parseInt(tokens[0]);
-                //Product nameString = tokens[1];
                 Product name = products.get(tokens[1]);  // get the second item from the token array
-                price.add(Double.parseDouble(tokens[3]));
+                Double price = Double.valueOf(tokens[2]);
                 products.put(id, name);
 
             }
@@ -94,6 +92,7 @@ public class Shopper {
         return products;
 
     }
+     */
 
     @Override
     public String toString() {

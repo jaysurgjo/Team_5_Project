@@ -5,12 +5,14 @@ public class Product {
     private String name;
     private double price;
 
+    // constructor
     public Product(int id, String name, double price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
+    // Getters
     public int getId() {
         return id;
     }
@@ -23,8 +25,9 @@ public class Product {
         return price;
     }
 
-    @Override
+    // toString()
     public String toString() {
-        return "Products: " + getId() + " " + getName() + " " + getPrice();
+        return ("id= " + getId() + " name= " + getName() + " price= " + getPrice());
     }
+
 }

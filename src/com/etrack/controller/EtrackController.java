@@ -17,12 +17,12 @@ public class EtrackController {
     public void execute(){
         welcome();
         promptForCustomerName();
-        showProductList();
-        promptForProductId();
-        addToCart();
-        promptToContinueShopping();
-        displayCart();
-        checkOut();
+        //showProductList();
+        //promptForProductId();
+        //addToCart();
+        //promptToContinueShopping();
+        //displayCart();
+        //checkOut();
      }
 
     private void welcome() {
@@ -46,6 +46,7 @@ public class EtrackController {
          }
          return  userName;
      }
+
 
     // show products available
     public List<Product> showProductList() {
@@ -84,10 +85,9 @@ public class EtrackController {
             promptForProductId();
         }
         else {
-            // checkout
+            checkOut();
         }
     }
-
 
     // displau cart
     public void displayCart() {

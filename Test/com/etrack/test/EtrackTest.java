@@ -1,6 +1,17 @@
 package com.etrack.test;
 
-class EtrackTest {
+import com.etrack.Product;
+import com.etrack.ProductLoader;
+import org.junit.Test;
 
-    //test class
+import java.io.IOException;
+import java.util.List;
+
+public class EtrackTest {
+
+    @Test
+    public void loadproductList() throws IOException {
+
+    }
+
 }

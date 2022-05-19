@@ -1,5 +1,6 @@
 package com.rtrack.controller;
 
+import com.apps.util.Console;
 import com.rtrack.Product;
 import com.rtrack.ProductLoader;
 import com.rtrack.Shopper;
@@ -7,7 +8,7 @@ import com.rtrack.view.ProductView;
 
 import java.util.*;
 
-public class EtrackController {
+public class RtrackController {
     private Scanner scanner = new Scanner(System.in);    // String - nextLine  Integer- nextInt
     private Map<Integer, Product> productMap = ProductLoader.loadProducts();
     private Shopper shopper = null;
@@ -30,6 +31,7 @@ public class EtrackController {
             stillShopping = promptToContinueShopping();
         }
         System.out.println();
+        Console.clear();
         checkOut();
     }
 

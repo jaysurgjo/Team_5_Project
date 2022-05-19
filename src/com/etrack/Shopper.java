@@ -4,13 +4,14 @@ import java.util.*;
 
 public class Shopper {
 
-    private String customerName;
+    private final String customerName;
     private double rewards;
     private static final double REWARDS_FACTOR = 5.0;
+    private static final double TAXES = 0.07; // General taxation rate.
     private final Collection<Product> cart = new ArrayList<>();
 
     /*
-     * If id inserted by customer matches he id in product
+     * If id inserted by customer matches the id in product
      * add the product associated with the id
      * And add to cart collection above
      */
@@ -23,10 +24,8 @@ public class Shopper {
         cart.add(product);
     }
 
-
-
     /*
-     * If id inserted by customer matches he id in product
+     * If id inserted by customer matches the id in product
      * remove the product associated with the id
      * And add to cart collection above
      */
@@ -34,12 +33,17 @@ public class Shopper {
         cart.remove(product);
     }
 
+    public double totalCostOfAllProductsAndTaxes() {
+        double totalCost = (subTotal() + getTotalTax()); // creating variable to store and add subtotal of items.
+        return Math.round(totalCost);  //returned the variable
+    }
 
-    /*
-     * Get the price of each item and add it.
-     * This can be done by matching a price with an id or price with product
-     */
-    public double totalCostOfAllProducts() {
+    // Calculating the tax for the cart.
+    public double getTotalTax() {
+        return Math.round(subTotal() * TAXES);
+    }
+
+    public double subTotal() {
         double total = 0.0;
         for (Product product : cart){
             total += product.getPrice();
@@ -49,7 +53,6 @@ public class Shopper {
 
     // getCart - returns a copy of collection - List.copyof(cart)
     public List<Product> getCart() {
-
         return List.copyOf(cart);
     }
 
@@ -59,7 +62,7 @@ public class Shopper {
      */
 
     /*
-     * Contuue running steps above unless customer decides to checkout
+     * Continue running steps above unless customer decides to check out
      */
 
     public String getCustomerName() {
@@ -67,12 +70,11 @@ public class Shopper {
     }
 
     public double getRewards() {
-
-        return Math.round(totalCostOfAllProducts()/REWARDS_FACTOR); // to do static divider;
+        return Math.round(totalCostOfAllProductsAndTaxes()/REWARDS_FACTOR); // to do static divider;
     }
 
     @Override
     public String toString() {
-        return "CustomerName: " + getCustomerName() + " totalCost: " + totalCostOfAllProducts() + "reward points=" + getRewards();
+        return "CustomerName: " + getCustomerName() + " totalCost: " + totalCostOfAllProductsAndTaxes() + "reward points: " + getRewards();
     }
 }

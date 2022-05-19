@@ -5,6 +5,7 @@ import com.etrack.ProductLoader;
 import com.etrack.Shopper;
 import com.rtrack.view.ProductView;
 
+import java.io.Console;
 import java.util.*;
 
 public class EtrackController {
@@ -12,9 +13,9 @@ public class EtrackController {
     private Map<Integer, Product> productMap = ProductLoader.loadProducts();
     private Shopper shopper = null;
     private boolean stillShopping = true;
+    private static final int PAGE_SIZE = 25;
 
 
-    //created model class
     public void execute() {
         welcome();
         String customerName = promptForCustomerName();
@@ -29,7 +30,6 @@ public class EtrackController {
             System.out.println();
             stillShopping = promptToContinueShopping();
         }
-        // all methods private
         System.out.println();
         checkOut();
     }
@@ -57,7 +57,7 @@ public class EtrackController {
 
     // show products available
     public void showProductList() {
-        System.out.println("Please choose from the following product: " );
+        System.out.println("Please choose from the following product: ");
         ProductView view = new ProductView(productMap);
         view.render();
     }
@@ -104,10 +104,10 @@ public class EtrackController {
     }
 
     public void checkOut() {
-        System.out.println("Cart: " + shopper.getCart() + " total: $" + shopper.totalCostOfAllProducts()
-                            + " rewards: $" + shopper.getRewards());
-
+        System.out.println("Cart: " + shopper.getCart());
+        System.out.println("SubTotal: $" + shopper.subTotal());
+        System.out.println("Taxes: $" + shopper.getTotalTax());
+        System.out.println("Total: $" + shopper.totalCostOfAllProductsAndTaxes());
+        System.out.println("Rewards: $" + shopper.getRewards());
     }
-
-
 }

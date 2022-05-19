@@ -13,14 +13,13 @@ public class ProductView {
 
     public void render() {
         if (productList.isEmpty()){
-            System.out.println("There is not product to show");
+            System.out.println("There is no product to show");
         }
         else {
             for(Map.Entry<Integer, Product> entry : productList.entrySet()){
-                System.out.println("id :" +  entry.getKey() + " product: " + entry.getValue());
+                System.out.println("ID:" +  entry.getKey() + " Product: " + entry.getValue());
             }
         }
     }
-
 }
 

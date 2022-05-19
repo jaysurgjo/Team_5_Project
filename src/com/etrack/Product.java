@@ -27,7 +27,6 @@ public class Product {
 
     // toString()
     public String toString() {
-        return (getName() + "  " + " price= " + getPrice());
+        return getName() + " Price: " + getPrice();
     }
-
 }

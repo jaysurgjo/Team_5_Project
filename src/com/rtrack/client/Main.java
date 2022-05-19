@@ -1,7 +1,6 @@
-package com.etrack.client;
+package com.rtrack.client;
 
-import com.etrack.Shopper;
-import com.etrack.controller.EtrackController;
+import com.rtrack.controller.EtrackController;
 
 import java.io.FileNotFoundException;
 

@@ -1,11 +1,10 @@
-package com.etrack.controller;
+package com.rtrack.controller;
 
-import com.etrack.Product;
-import com.etrack.ProductLoader;
-import com.etrack.Shopper;
+import com.rtrack.Product;
+import com.rtrack.ProductLoader;
+import com.rtrack.Shopper;
 import com.rtrack.view.ProductView;
 
-import java.io.Console;
 import java.util.*;
 
 public class EtrackController {

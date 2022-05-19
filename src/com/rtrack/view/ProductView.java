@@ -1,6 +1,6 @@
 package com.rtrack.view;
 
-import com.etrack.Product;
+import com.rtrack.Product;
 
 import java.util.Map;
 

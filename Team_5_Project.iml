@@ -22,5 +22,6 @@
     <orderEntry type="library" exported="" name="app-utils-1.1" level="project" />
     <orderEntry type="library" exported="" name="lib" level="project" />
     <orderEntry type="library" name="app-utils-1.11" level="project" />
+    <orderEntry type="library" name="app-utils-1.1" level="project" />
   </component>
 </module>
